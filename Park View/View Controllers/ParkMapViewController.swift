@@ -29,12 +29,15 @@
  */
 
 import UIKit
+import MapKit
+
 
 class ParkMapViewController: UIViewController {
   
   var selectedOptions : [MapOptionsType] = []
   
-  override func viewDidLoad() {
+    @IBOutlet weak var mapView: MKMapView!
+    override func viewDidLoad() {
     super.viewDidLoad()
   }
   
@@ -55,4 +58,7 @@ class ParkMapViewController: UIViewController {
   @IBAction func mapTypeChanged(_ sender: UISegmentedControl) {
     // TODO
   }
+}
+extension ParkMapViewController: MKMapViewDelegate {
+    
 }
