@@ -67,7 +67,8 @@ class ParkMapViewController: UIViewController {
   }
   
   @IBAction func mapTypeChanged(_ sender: UISegmentedControl) {
-    // TODO
+    mapView.mapType = MKMapType.init(rawValue: UInt(sender.selectedSegmentIndex)) ?? .standard
+
   }
 }
 extension ParkMapViewController: MKMapViewDelegate {
