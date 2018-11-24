@@ -58,8 +58,12 @@ class ParkMapViewController: UIViewController {
         
         for option in selectedOptions {
             switch (option) {
+            case .mapOverlay:
+                addOverlay()
             case .mapPins:
                 addAttractionPins()
+            case .mapRoute:
+                addRoute()
             default:
                 break;
                 
@@ -98,12 +102,25 @@ class ParkMapViewController: UIViewController {
             mapView.addAnnotation(annotation)
         }
     }
+    func addRoute() {
+        guard let points = Park.plist("EntranceToGoliathRoute") as? [String] else { return }
+        
+        let cgPoints = points.map { CGPointFromString($0) }
+        let coords = cgPoints.map { CLLocationCoordinate2DMake(CLLocationDegrees($0.x), CLLocationDegrees($0.y)) }
+        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
+        
+        mapView.add(myPolyline)
+    }
 
 }
 extension ParkMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is ParkMapOverlay {
             return ParkMapOverlayView(overlay: overlay, overlayImage: #imageLiteral(resourceName: "overlay_park"))
+        } else if overlay is MKPolyline {
+            let lineView = MKPolylineRenderer(overlay: overlay)
+            lineView.strokeColor = UIColor.green
+            return lineView
         }
         
         return MKOverlayRenderer()
