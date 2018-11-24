@@ -60,7 +60,7 @@ class ParkMapViewController: UIViewController {
             switch (option) {
             case .mapOverlay:
                 addOverlay()
-            case .mapPins:
+            case .mapPins:ll
                 addAttractionPins()
             case .mapRoute:
                 addRoute()
