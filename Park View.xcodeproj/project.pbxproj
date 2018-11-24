@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B018E65921A8E082001C77C2 /* ParkMapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B018E65821A8E082001C77C2 /* ParkMapOverlay.swift */; };
+		B018E65B21A8E0B3001C77C2 /* ParkMapOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B018E65A21A8E0B3001C77C2 /* ParkMapOverlayView.swift */; };
 		B0E1465E21A879800069CC54 /* Park.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1465D21A879800069CC54 /* Park.swift */; };
 		C09F12DB1F1C39B70013BFBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F12DA1F1C39B70013BFBC /* AppDelegate.swift */; };
 		C09F12E01F1C39B70013BFBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09F12DE1F1C39B70013BFBC /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B018E65821A8E082001C77C2 /* ParkMapOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkMapOverlay.swift; sourceTree = "<group>"; };
+		B018E65A21A8E0B3001C77C2 /* ParkMapOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkMapOverlayView.swift; sourceTree = "<group>"; };
 		B0E1465D21A879800069CC54 /* Park.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Park.swift; sourceTree = "<group>"; };
 		C09F12D71F1C39B70013BFBC /* Park View.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Park View.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C09F12DA1F1C39B70013BFBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 		C0B630FF1F2B025F00E888EA /* Overlays */ = {
 			isa = PBXGroup;
 			children = (
+				B018E65821A8E082001C77C2 /* ParkMapOverlay.swift */,
+				B018E65A21A8E0B3001C77C2 /* ParkMapOverlayView.swift */,
 			);
 			path = Overlays;
 			sourceTree = "<group>";
@@ -208,6 +214,8 @@
 				C09F13091F1C40F10013BFBC /* MapOptionsViewController.swift in Sources */,
 				C09F130A1F1C40F10013BFBC /* ParkMapViewController.swift in Sources */,
 				C09F12DB1F1C39B70013BFBC /* AppDelegate.swift in Sources */,
+				B018E65921A8E082001C77C2 /* ParkMapOverlay.swift in Sources */,
+				B018E65B21A8E0B3001C77C2 /* ParkMapOverlayView.swift in Sources */,
 				B0E1465E21A879800069CC54 /* Park.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

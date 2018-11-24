@@ -52,9 +52,19 @@ class ParkMapViewController: UIViewController {
 
     var park = Park(filename: "MagicMountain")
 
-  func loadSelectedOptions() {
-    // TODO
-  }
+    func loadSelectedOptions() {
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+        
+        for option in selectedOptions {
+            switch (option) {
+            case .mapOverlay:
+                addOverlay()
+            default:
+                break;
+            }
+        }
+    }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     (segue.destination as? MapOptionsViewController)?.selectedOptions = selectedOptions
@@ -70,7 +80,18 @@ class ParkMapViewController: UIViewController {
     mapView.mapType = MKMapType.init(rawValue: UInt(sender.selectedSegmentIndex)) ?? .standard
 
   }
+    func addOverlay() {
+        let overlay = ParkMapOverlay(park: park)
+        mapView.add(overlay)
+    }
+
 }
 extension ParkMapViewController: MKMapViewDelegate {
-    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is ParkMapOverlay {
+            return ParkMapOverlayView(overlay: overlay, overlayImage: #imageLiteral(resourceName: "overlay_park"))
+        }
+        
+        return MKOverlayRenderer()
+    }
 }
