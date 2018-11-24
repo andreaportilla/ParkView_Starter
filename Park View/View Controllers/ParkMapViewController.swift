@@ -66,8 +66,11 @@ class ParkMapViewController: UIViewController {
                 addRoute()
             case .mapBoundary:
                 addBoundary()
-            default:
-                break;
+            case .mapCharacterLocation:
+                addCharacterLocation()
+
+           // default:
+           //     break;
                 
             }
         }
@@ -116,7 +119,11 @@ class ParkMapViewController: UIViewController {
     func addBoundary() {
         mapView.add(MKPolygon(coordinates: park.boundary, count: park.boundary.count))
     }
-
+    func addCharacterLocation() {
+        mapView.add(Character(filename: "BatmanLocations", color: .blue))
+        mapView.add(Character(filename: "TazLocations", color: .orange))
+        mapView.add(Character(filename: "TweetyBirdLocations", color: .yellow))
+    }
 }
 extension ParkMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -130,10 +137,15 @@ extension ParkMapViewController: MKMapViewDelegate {
             let polygonView = MKPolygonRenderer(overlay: overlay)
             polygonView.strokeColor = UIColor.magenta
             return polygonView
+        } else if let character = overlay as? Character {
+            let circleView = MKCircleRenderer(overlay: character)
+            circleView.strokeColor = character.color
+            return circleView
         }
         
         return MKOverlayRenderer()
     }
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = AttractionAnnotationView(annotation: annotation, reuseIdentifier: "Attraction")
         annotationView.canShowCallout = true
